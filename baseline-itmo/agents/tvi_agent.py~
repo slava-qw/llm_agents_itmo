@@ -1,0 +1,32 @@
+import asyncio
+
+from tavily import TavilyClient
+
+client = TavilyClient(api_key="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")
+
+
+async def search_web(query: str):
+    """
+    Performs an external API search, returns no more than `max_results` of links.
+    :param query: a search query.
+    :param max_results: the maximum number of links to be returned.
+    :return: a list of relevant links.
+    """
+
+    return client.search(query)
+
+if __name__ == "__main__":
+    # res = asyncio.run(search_web("What is Fermat's Last Theorem?"))
+    res = {'query': "What is Fermat's Last Theorem?", 'follow_up_questions': None, 'answer': None, 'images': [], 'results': [{'title': "Fermat's Last Theorem - Wikipedia", 'url': "https://en.wikipedia.org/wiki/Fermat's_Last_Theorem", 'content': "In number theory, Fermat's Last Theorem (sometimes called Fermat's conjecture, especially in older texts) states that no three positive integers a, b, and c satisfy the equation a n + b n = c n for any integer value of n greater than 2.The cases n = 1 and n = 2 have been known since antiquity to have infinitely many solutions. [1]The proposition was first stated as a theorem by Pierre de", 'score': 0.9725011, 'raw_content': None}, {'title': "Fermat's Last Theorem - Simple English Wikipedia, the free encyclopedia", 'url': "https://simple.wikipedia.org/wiki/Fermat's_Last_Theorem", 'content': 'Fermat\'s Last Theorem is a more general form of the Pythagorean theorem, [1] which is an equation that says: + = When , and are whole numbers this is called a "Pythagorean triple". For example, + = + =, and since = we can say + = is a Pythagorean triple. Fermat\'s Last Theorem rewrites this as + = and claims that, if you make the a larger whole number than 2, then , and cannot all be natural', 'score': 0.9694662, 'raw_content': None}, {'title': "Fermat's Last Theorem -- from Wolfram MathWorld", 'url': 'https://mathworld.wolfram.com/FermatsLastTheorem.html', 'content': "Fermat's last theorem is a theorem first proposed by Fermat in the form of a note scribbled in the margin of his copy of the ancient Greek text Arithmetica by Diophantus. The scribbled note was discovered posthumously, and the original is now lost. However, a copy was preserved in a book published by Fermat's son. In the note, Fermat claimed to have discovered a proof that the Diophantine", 'score': 0.96437865, 'raw_content': None}, {'title': "Fermat's last theorem - MacTutor History of Mathematics", 'url': "https://mathshistory.st-andrews.ac.uk/HistTopics/Fermat's_last_theorem/", 'content': "Fermat's Last Theorem states that x n + y n = z n x^{n} + y^{n} = z^{n} x n + y n = z n. has no non-zero integer solutions for x, y x, y x, y and z z z when n > 2 n > 2 n > 2. Fermat wrote I have discovered a truly remarkable proof which this margin is too small to contain.", 'score': 0.94289196, 'raw_content': None}, {'title': "Fermat's last theorem | Definition, Example, & Facts | Britannica", 'url': 'https://www.britannica.com/science/Fermats-last-theorem', 'content': "Fermat's last theorem, the statement that there are no natural numbers (1, 2, 3,…) x, y, and z such that x n + y n = z n, in which n is a natural number greater than 2. For example, if n = 3, Fermat's last theorem states that no natural numbers x, y, and z exist such that x 3 + y 3 = z 3 (i.e., the sum of two", 'score': 0.939919, 'raw_content': None}], 'response_time': 1.88}
+
+    # print(res)
+    res_res = res['results']
+    all_links = []
+    content = ""
+    for elem in res_res:
+        all_links.append(elem['url'])
+        content += elem['title'] + "\n" + elem['content'] + "\n\n"
+
+    print(content)
+    print(all_links)
+

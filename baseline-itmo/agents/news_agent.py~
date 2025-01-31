@@ -1,0 +1,24 @@
+import httpx
+from typing import List
+
+NEWS_RSS_URL = "https://news.itmo.ru/ru/rss"
+
+
+async def fetch_latest_news(max_items: int = 3) -> List[str]:
+    """
+    Получаем список ссылок на последние новости об ИТМО (например, из RSS).
+    :param max_items: сколько ссылок на последние новости вернуть.
+    """
+    # Пример: получение RSS ленты
+    # async with httpx.AsyncClient() as client:
+    #     resp = await client.get(NEWS_RSS_URL)
+    #     # Спарсить XML, вытащить нужные элементы <item><link>...</link></item>
+    #     # news_links = parse_rss(resp.text)
+    #     # return news_links[:max_items]
+
+    # Для упрощения – заглушка
+    return [
+        "https://news.itmo.ru/ru/news/1",
+        "https://news.itmo.ru/ru/news/2",
+        "https://news.itmo.ru/ru/news/3",
+    ][:max_items]
