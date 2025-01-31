@@ -2,7 +2,7 @@ import asyncio
 
 from tavily import TavilyClient
 
-client = TavilyClient(api_key="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")
+client = TavilyClient(api_key=None)
 
 
 async def search_web(query: str):
