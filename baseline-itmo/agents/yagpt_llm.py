@@ -1,7 +1,7 @@
 from yandex_cloud_ml_sdk import YCloudML
 
-API_KEY = "AQVN22-Mzx-zLXZILQ4B9A1051Gomq6VpZT7blLi"
-FOLDER_ID = "b1g4ekc90r3ui0kbqgdr"
+API_KEY = ""
+FOLDER_ID = ""
 
 
 async def give_answer(guide_prompt, prompt, links=None):
